@@ -12,7 +12,7 @@
 # implementing a tree using the recurisve 
 # each tree consists of a root and a list of branches
 # alright, let's get started
-# I'll implement a binary tree using the definition in this ReadMe
+# I'll implement a binary tree using the definition in the ReadMe
 def binary_tree(root, branches=[]):
     for branch in branches:
         assert is_binary_tree(branch)
