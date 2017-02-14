@@ -150,6 +150,19 @@ def has_path_sum(t, s):
     else:
         left, right = branches(t)
         return has_path_sum(left, s - root(t)) or has_path_sum(right, s - root(t))
+    
+    
+    
+def same_tree(t1, t2):
+    if is_leaf(t1) and is_leaf(t2):
+        return root(t1) == root(t2)
+    elif is_leaf(t1) and not is_leaf(t2):
+        return False
+    else:
+        left_1, right_1 = branches(t1)
+        left_2, right_2 = branches(t2)
+
+        return same_tree(left_1, left_2) and same_tree(right_1, right_2) and root(t1) == root(t2)
 
 
 
