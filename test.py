@@ -18,37 +18,28 @@
 # implementing a tree using the recurisve 
 # each tree consists of a root and a list of branches
 # alright, let's get started
-
-
-# constructors
-def tree(root, branches=[]):
+def binary_tree(root, branches=[]):
     for branch in branches:
-        assert is_tree(branch)
-    return [root] +  list(branches)
-# getters
+        assert is_binary_tree(branch)
+    return [root] + branches
+
+def is_binary_tree(t):
+    if type(t) != list or len(t) < 1 or len(branches(t)) > 2:
+        return False
+    else:
+        for branch in branches(t):
+            if not is_binary_tree(branch):
+                return False
+        return True
+
 def root(tree):
     return tree[0]
 
 def branches(tree):
     return tree[1:]
 
-def is_tree(tree):
-    if type(tree) != list or len(tree) < 1:
-        return False
-    for branch in branches(tree):
-        if not is_tree(branch):
-            return False
-    return True
-
 def is_leaf(tree):
     return not branches(tree)
-
-def fib_tree(n):
-    if n <= 1:
-        return tree(n)
-    else:
-        left, right = fib_tree(n - 2), fib_tree(n - 1)
-        return tree(root(left) + root(right), [left, right])
 
 def count_leaves(tree):
     if is_leaf(tree):
@@ -68,7 +59,6 @@ def list_leaves(tree):
     else:
         return sum([list_leaves(b) for b in branches(tree)], [])
 
-
 def increment_leaves(t):
     if is_leaf(t):
         return tree(root(t) + 1)
@@ -87,23 +77,6 @@ def print_tree(t, indent=0):
     print ('  ' * indent + str(root(t)))
     for b in branches(t):
         print_tree(b, indent + 1)
-
-
-# some binary_tree abstractions
-
-def binary_tree(root, branches=[]):
-    for branch in branches:
-        assert is_binary_tree(branch)
-    return [root] + branches
-
-def is_binary_tree(t):
-    if type(t) != list or len(t) < 1 or len(branches(t)) > 2:
-        return False
-    else:
-        for branch in branches(t):
-            if not is_binary_tree(branch):
-                return False
-        return True
 
 def count_leaves(t):
     if is_leaf(t):
@@ -130,7 +103,6 @@ def increment_leaves(t):
         return binary_tree(root(t) + 1)
     else:
         return binary_tree(root(t), [increment_leaves(b) for b in branches(t)])
-
 
 def increment(t):
     root = root(t) + 1
@@ -187,7 +159,7 @@ def has_path_sum(t, s):
 
 
 
-new_binary_tree = binary_tree(2, [binary_tree(1), binary_tree(3)])
+
 
 
 
