@@ -1,9 +1,3 @@
-# box and pointer notation
-# Closure property - 
-# example - If I put items into a list, then we 
-# should be able to put those items into a list
-# by ourselves. 
-
 # trees
 
 # recursive description of trees (wooden trees)
@@ -18,6 +12,7 @@
 # implementing a tree using the recurisve 
 # each tree consists of a root and a list of branches
 # alright, let's get started
+# I'll implement a binary tree using the definition in this ReadMe
 def binary_tree(root, branches=[]):
     for branch in branches:
         assert is_binary_tree(branch)
