@@ -13,6 +13,10 @@
 # each tree consists of a root and a list of branches
 # alright, let's get started
 # I'll implement a binary tree using the definition in the ReadMe
+
+# Note that most of these algorithms have a flaw. If you happen upon this page
+# before I fix it, you should try and find the flaw!
+
 def binary_tree(root, branches=[]):
     for branch in branches:
         assert is_binary_tree(branch)
