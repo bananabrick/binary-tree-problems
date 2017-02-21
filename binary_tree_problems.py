@@ -124,7 +124,9 @@ def max_depth(t):
     if is_leaf(t):
         return 0
     else:
-        left, right = branches(t)
+        max_depth_branches = max(max_depth(b) for b in branches(t))
+        
+        return 1 + max_depth_branches
         max_depth_left, max_depth_right = max_depth(left), max_depth(right)
 
         return 1 + max_depth_left if max_depth_left > max_depth_right else 1 + max_depth_right
