@@ -61,7 +61,7 @@ def prune(t, k):
         sticks = [prune(b, k - 1) for b in branches(t)]
         return tree(root(t), sticks)
 
-
+# fix this really messy!!!
 def hailstone_tree(n, h):
     if h == 0:
         return tree(n)
