@@ -157,6 +157,6 @@ def same_tree(t1, t2):
     else:
         branches_t1 = branches(t1)
         branches_t2 = branches(t2)
-        if len(branches_1) != len(branches_t2):
+        if len(branches_t1) != len(branches_t2):
             return False
         return root(t1) == root(t2) and all(same_tree(branches_t1[i], branches_t2[i]) for i in range(len(branches_t1)))
