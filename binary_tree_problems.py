@@ -123,41 +123,31 @@ def fib_binary_tree(n):
 def max_depth(t):
     if is_leaf(t):
         return 0
-    else:
-        max_depth_branches = max(max_depth(b) for b in branches(t))
-        
-        return 1 + max_depth_branches
-        max_depth_left, max_depth_right = max_depth(left), max_depth(right)
-
-        return 1 + max_depth_left if max_depth_left > max_depth_right else 1 + max_depth_right
+    else:        
+        return 1 + max(max_depth(b) for b in branches(t))
 
 def min_value(t):
     if is_leaf(t):
         return root(t)
     else:
-        left, right = branches(t)
-        min_value_left, min_value_right = min_value(left), min_value(right)
-        r = root(t)
-
-        return min(r, min_value_right, min_value_left)
+        min_in_branches = min(min_value(b) for b in branches(t))
+        return min(min_in_branches, root(t))
 
 def post_order(t):
     if is_leaf(t):
         print (root(t))
     else:
-        left, right = branches(t)
-        post_order(left)
-        post_order(right)
+        for b in branches(t):
+            post_order(b)
         print (root(t))
-
+        
 def has_path_sum(t, s):
     if is_leaf(t):
         return root(t) == s
     else:
-        left, right = branches(t)
-        return has_path_sum(left, s - root(t)) or has_path_sum(right, s - root(t))
-    
-    
+        has_sum = [has_path_sum(b, s - root(t)) for b in branches(t)]
+        return any(has_sum)
+
     
 def same_tree(t1, t2):
     if is_leaf(t1) and is_leaf(t2):
@@ -165,7 +155,8 @@ def same_tree(t1, t2):
     elif is_leaf(t1) and not is_leaf(t2):
         return False
     else:
-        left_1, right_1 = branches(t1)
-        left_2, right_2 = branches(t2)
-
-        return same_tree(left_1, left_2) and same_tree(right_1, right_2) and root(t1) == root(t2)
+        branches_t1 = branches(t1)
+        branches_t2 = branches(t2)
+        if len(branches_1) != len(branches_t2):
+            return False
+        return root(t1) == root(t2) and all(same_tree(branches_t1[i], branches_t2[i]) for i in range(len(branches_t1)))
