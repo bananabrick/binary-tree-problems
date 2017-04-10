@@ -156,4 +156,4 @@ def same_tree(t1, t2):
         branches_t2 = branches(t2)
         if len(branches_t1) != len(branches_t2):
             return False
-        return root(t1) == root(t2) and all(same_tree(branches_t1[i], branches_t2[i]) for i in range(len(branches_t1)))
+        return root(t1) == root(t2) and all(same_tree(b1, b2) for b1, b2 in zip(branches_t1, branches_t2))
