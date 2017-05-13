@@ -2,17 +2,17 @@
 
 # recursive description of trees (wooden trees)
 # - a tree has a roor value and a list of branches
-# - a tree with 0 branches is called a root
+# - a tree with 0 branches is called a leaf
 
 # relative description of trees (family trees)
 # - nodes with values
 # - each node is the root value of some other tree
 # - each parent node is the sum of all child nodes
 
-# implementing a tree using the recurisve 
+# implementing a tree using the recurisve definition
 # each tree consists of a root and a list of branches
 # alright, let's get started
-# I'll implement a binary tree using the definition in the ReadMe
+# I'll implement a binary tree using the definition in the README
 
 def binary_tree(root, branches=[]):
     for branch in branches:
@@ -156,5 +156,7 @@ def same_tree(t1, t2):
         branches_t2 = branches(t2)
         if len(branches_t1) != len(branches_t2):
             return False
-        confirm_same_branches = all(same_tree(b1, b2) for b1, b2 in zip(branches_t1, branches_t2))
+        confirm_same_branches = all(same_tree(b1, b2) 
+                                    for b1, b2 in zip(branches_t1, 
+                                                      branches_t2))
         return root(t1) == root(t2) and confirm_same_branches
