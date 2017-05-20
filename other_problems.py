@@ -72,21 +72,4 @@ def hailstone_tree(n, h):
             return tree(n, [right, left])
         else:
             return tree(n, [right])
-
-
-
-
-
-
-
-
-
-
-
         
-
-
-
-
-
-
